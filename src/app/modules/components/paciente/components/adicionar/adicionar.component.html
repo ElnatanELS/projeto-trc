@@ -1,0 +1,35 @@
+<form [formGroup]="form" class="normal-form">
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <input type="hidden" formControlName="$key">
+        <mat-form-field>
+          <input formControlName="paciente_nome" matInput placeholder="Nome Completo*" name="paciente_nome"  #paciente_nome>
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+        <div class="add-bottom-padding">
+          <mat-radio-group formControlName="paciente_genero" name="paciente_genero" >
+            <mat-radio-button value="1">Masculino</mat-radio-button>
+            <mat-radio-button value="2">Feminino</mat-radio-button>
+            <mat-radio-button value="3">Outro</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <!-- <mat-form-field>
+          <input formControlName="paciente_data_de_nascimento" matInput [matDatepicker]="picker" placeholder="Data de Nascimento"  name="paciente_data_de_nascimento"  #paciente_data_de_nascimento>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid" (click)="adicionarPaciente(paciente_nome, paciente_genero, paciente_data_de_nascimento)">Enviar</button>
+          <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
